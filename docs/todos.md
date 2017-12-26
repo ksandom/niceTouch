@@ -4,8 +4,8 @@ Here is a list of stuff that needs to be done to improve this.
 
 ## For initial release.
 
-* Detect screens with offsets.
-* Detect touch devices.
+* Detect screens with offsets. - DONE
+* Detect touch devices. - IN PROGRESS
 * Record state.
 * Notice new screen.
 * Notice new touch device.
