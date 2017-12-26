@@ -21,3 +21,10 @@ Here is a list of stuff that needs to be done to improve this.
 * Install as KDE service.
 * Intrgrations with other desktop managers.
 * Documentation.
+ * How to fix it when niceTouch gets it wrong.
+* Make code more pythonic.
+* Make optional to guess in ambiguous situations (Eg multiple touch interfaces permanently attached.)
+* Improve guessing.
+ * Default associations with brands/models.
+ * Prioritise device order?
+ * Other clues?
