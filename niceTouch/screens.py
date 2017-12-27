@@ -37,6 +37,12 @@ class Screens():
                     * s/ .* /,/g - Remove everything except the ID and the dimention and position data.
                     * s/x/,/g - Change the x in the resolution to a ,. This plus the next step make the explode easy and one step.
                     * s/+/,/g - Change the + for the offsets to ,s to make the explode one step.
+            
+            Why it needs to be revisited:
+                * It is dependant on specific formatting of the data.
+                    * Minor changes to the human readable format will destroy compatiblity.
+                    * Different versions of xinput may output the data differently.
+                * There is almost certainly a way to get this information within python in a more elegant way.
         """
         
         # Process the rawData.

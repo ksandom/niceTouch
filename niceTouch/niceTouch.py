@@ -29,6 +29,7 @@ class NiceTouch():
     
     def showState(this):
         print (this.screens.screens)
+        print (this.touchPanels.touchPanels)
     
     # TODO Add Save state
     # TODO Add Load state
