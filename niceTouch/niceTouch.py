@@ -16,16 +16,19 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from . import screens,touchPanels
+from . import screens,touchPanels,state
 
 class NiceTouch():
     def __init__(this):
         this.screens = screens.Screens()
         this.touchPanels = touchPanels.TouchPanels()
+        this.state = state.State()
     
     def scan(this):
         this.screens.scan();
         this.touchPanels.scan();
+        
+        this.state.save()
     
     def showState(this):
         print (this.screens.screens)

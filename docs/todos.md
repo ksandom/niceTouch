@@ -6,7 +6,7 @@ Here is a list of stuff that needs to be done to improve this.
 
 * Detect screens with offsets. - DONE
 * Detect touch devices. - DONE
-* Record state.
+* Record state. - DONE
 * Notice new screen.
 * Notice new touch device.
  * Automatically associate new touch device with recent unassociated screen.
