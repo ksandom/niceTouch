@@ -20,8 +20,8 @@ Here is a list of stuff that needs to be done to improve this.
 
 I've ordered them roughly in my order of preference, but feel free to take what ever interests you. If you see anything nissing, you're welcomme to add it.
 
-* Make installation easy. `pip install`?
 * Unit tests.
+* Make installation easy. `pip install`?
 * Add exception handeling.
 * Graceful failure.
 * Abstract functionality functionality better.
