@@ -17,13 +17,14 @@
 """
 
 import subprocess
+import time
 
 class Screens():
     def __init__(this):
-        this.screens=[]
+        this.screens = {}
     
     def scan(this):
-        output = []
+        output = {}
         
         # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
         rawData = subprocess.check_output(['bash', '-c', "xrandr | grep ' connected ' | sed 's/ (.*//g;s/ .* /,/g;s/x/,/g;s/+/,/g'"])
@@ -49,11 +50,24 @@ class Screens():
         rawDataLines=rawData.splitlines()
         for line in rawDataLines:
             lineParts = line.decode().split(',')
-            output.append(Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3]))
+            output[lineParts[0]] = Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3])
         
         # Return the output.
         this.screens=output
         return output
+    
+    def getPersistentState(this):
+        output = {}
+        
+        for screenID in this.screens:
+            output[screenID] = this.screens[screenID].getState()
+        
+        return output
+    
+    def setPersistentState(this, state):
+        for screenID in state:
+            # TODO This should be done in a more object-oriented way.
+            this.screens[screenID].mostRecentlyIntroduced = state[screenID]['mostRecentlyIntroduced']
 
 class Screen():
     def __init__(this, screenID, width, height, xOffset, yOffset):
@@ -62,6 +76,10 @@ class Screen():
         this.height = height
         this.xOffset = xOffset
         this.yOffset = yOffset
+        this.mostRecentlyIntroduced = timestamp = int(time.time())
     
     def __repr__(self):
         return self.screenID
+    
+    def getState(this):
+        return {'screenID':this.screenID, 'mostRecentlyIntroduced':this.mostRecentlyIntroduced}

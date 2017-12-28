@@ -43,7 +43,13 @@ class State():
             print ("Could not find the file " + this.statePath + ". If this is the first run, you can safely ignore this error.")
             this.state={}
     
+    def setState(this, state):
+        this.state = state
+    
+    def getState(this):
+        return this.state
+    
     def save(this):
         # TODO Add try/excepts as conditions become apparrent.
         with open(this.statePath, 'w') as stream:
-            yaml.dump(this.state)
+            yaml.dump(this.state, stream, default_flow_style=False)

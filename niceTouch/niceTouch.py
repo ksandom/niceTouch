@@ -27,7 +27,18 @@ class NiceTouch():
     def scan(this):
         this.screens.scan();
         this.touchPanels.scan();
+        this.load()
         
+        this.save()
+    
+    def load(this):
+        this.screens.setPersistentState(this.state.getState()['screens'])
+        this.touchPanels.setPersistentState(this.state.getState()['touchPanels'])
+    
+    def save(this):
+        this.state.setState({
+            'screens':this.screens.getPersistentState(),
+            'touchPanels':this.touchPanels.getPersistentState()})
         this.state.save()
     
     def showState(this):
