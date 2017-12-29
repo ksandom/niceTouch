@@ -10,7 +10,8 @@ Here is a list of stuff that needs to be done to improve this.
 * Notice new screen. - DONE
 * Notice new touch device. - DONE
  * Automatically associate new touch device with recent unassociated screen. - DONE
-* Calibrate each touch device with its associated screen.
+* Calibrate each touch device with its associated screen. - DONE
+* Remove hard-coded path to persistent state.
 * Documentation
  * How to use it.
  * Normal flow.

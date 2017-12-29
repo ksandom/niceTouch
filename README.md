@@ -12,4 +12,7 @@ TODO Install
 * xrandr
 
 ## Contributions
+
+See [TODOs](docs/todos.md) for stuff that needs doing.
+
 TODO Contributions
