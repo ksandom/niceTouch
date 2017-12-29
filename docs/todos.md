@@ -7,9 +7,9 @@ Here is a list of stuff that needs to be done to improve this.
 * Detect screens with offsets. - DONE
 * Detect touch devices. - DONE
 * Record state. - DONE
-* Notice new screen.
-* Notice new touch device.
- * Automatically associate new touch device with recent unassociated screen.
+* Notice new screen. - DONE
+* Notice new touch device. - DONE
+ * Automatically associate new touch device with recent unassociated screen. - DONE
 * Calibrate each touch device with its associated screen.
 * Documentation
  * How to use it.
@@ -29,6 +29,11 @@ I've ordered them roughly in my order of preference, but feel free to take what 
 * Better commandline interaction.
 * Make able to run as a service.
  * DBUS integration.
+  * New Screen.
+  * New Touchpannel.
+  * Change resolution.
+  * Change layout.
+  * Change orientation. - Assumptions may need to be changed at this point.
  * Add polling as another option as well?
 * Install as KDE service.
 * Intrgrations with other desktop managers.

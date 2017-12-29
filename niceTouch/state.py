@@ -38,10 +38,15 @@ class State():
                 except yaml.YAMLError as error:
                     print ("Could not parse the YAML in "+this.statePath+". Human edited? Try a YAML lint. The error was")
                     print (error)
-                    this.state = {}
+                    this.state = this.getEmptyState()
         except FileNotFoundError as error:
             print ("Could not find the file " + this.statePath + ". If this is the first run, you can safely ignore this error.")
-            this.state={}
+            this.state = this.getEmptyState()
+    
+    def getEmptyState(this):
+        return {
+            'touchPanels':{},
+            'screens':{}}
     
     def setState(this, state):
         this.state = state

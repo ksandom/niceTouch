@@ -22,6 +22,7 @@ from . import devices
 
 class TouchPanels(devices.Devices):
     def __init__(this):
+        devices.Devices.__init__(this)
         this.devices = {}
 
     def scan(this):

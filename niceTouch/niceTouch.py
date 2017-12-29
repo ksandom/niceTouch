@@ -24,12 +24,32 @@ class NiceTouch():
         this.touchPanels = touchPanels.TouchPanels()
         this.state = state.State()
     
+    
     def scan(this):
         this.screens.scan();
         this.touchPanels.scan();
-        this.load()
+        this.load() # Load existing saved state and bring it into the current state.
+    
+    def associateNewDevices(this):
+        newestTouchPanelID = this.touchPanels.getNewestUnassociatedDeviceID()
+        lastDeviceID = ''
         
-        this.save()
+        while (newestTouchPanelID and newestTouchPanelID != lastDeviceID):
+            newestScreenID = this.screens.getNewestUnassociatedDeviceID()
+            
+            if newestScreenID:
+                this.associateDevices(newestTouchPanelID, newestScreenID)
+            else:
+                print ("Touch panel " + newestTouchPanelID + " found, but no matching screen was found. Be sure to plug in the screen first.")
+            
+            lastDeviceID = newestTouchPanelID
+            newestTouchPanelID = this.touchPanels.getNewestUnassociatedDeviceID()
+    
+    def associateDevices(this, touchPanelID, screenID):
+        this.touchPanels.devices[touchPanelID].associateWith(screenID)
+        this.screens.devices[screenID].associateWith(touchPanelID)
+    
+    
     
     def load(this):
         this.screens.setPersistentState(this.state.getState()['screens'])
@@ -40,6 +60,7 @@ class NiceTouch():
             'screens':this.screens.getPersistentState(),
             'touchPanels':this.touchPanels.getPersistentState()})
         this.state.save()
+    
     
     def showState(this):
         print (this.screens.devices)

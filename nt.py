@@ -23,4 +23,5 @@ from niceTouch import niceTouch
 nt = niceTouch.NiceTouch()
 
 nt.scan()
-nt.showState()
+nt.associateNewDevices()
+nt.save()

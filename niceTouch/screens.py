@@ -23,6 +23,7 @@ from . import devices
 
 class Screens(devices.Devices):
     def __init__(this):
+        devices.Devices.__init__(this)
         this.devices = {}
     
     def scan(this):
@@ -57,22 +58,10 @@ class Screens(devices.Devices):
         # Return the output.
         this.devices=output
         return output
-    
-    def getPersistentState(this):
-        output = {}
-        
-        for deviceID in this.devices:
-            output[deviceID] = this.devices[deviceID].getState()
-        
-        return output
-    
-    def setPersistentState(this, state):
-        for deviceID in state:
-            # TODO This should be done in a more object-oriented way.
-            this.devices[deviceID].mostRecentlyIntroduced = state[deviceID]['mostRecentlyIntroduced']
 
 class Screen(devices.Device):
     def __init__(this, deviceID, width, height, xOffset, yOffset):
+        devices.Device.__init__(this, deviceID, 'unnamed')
         this.deviceID = deviceID
         this.width = width
         this.height = height
@@ -82,6 +71,3 @@ class Screen(devices.Device):
     
     def __repr__(self):
         return self.deviceID
-    
-    def getState(this):
-        return {'deviceID':this.deviceID, 'mostRecentlyIntroduced':this.mostRecentlyIntroduced}
