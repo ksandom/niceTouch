@@ -18,6 +18,8 @@
 
 import subprocess
 import time
+from . import devices
+
 
 class Screens():
     def __init__(this):
@@ -59,19 +61,19 @@ class Screens():
     def getPersistentState(this):
         output = {}
         
-        for screenID in this.screens:
-            output[screenID] = this.screens[screenID].getState()
+        for deviceID in this.screens:
+            output[deviceID] = this.screens[deviceID].getState()
         
         return output
     
     def setPersistentState(this, state):
-        for screenID in state:
+        for deviceID in state:
             # TODO This should be done in a more object-oriented way.
-            this.screens[screenID].mostRecentlyIntroduced = state[screenID]['mostRecentlyIntroduced']
+            this.screens[deviceID].mostRecentlyIntroduced = state[deviceID]['mostRecentlyIntroduced']
 
-class Screen():
-    def __init__(this, screenID, width, height, xOffset, yOffset):
-        this.screenID = screenID
+class Screen(devices.Device):
+    def __init__(this, deviceID, width, height, xOffset, yOffset):
+        this.deviceID = deviceID
         this.width = width
         this.height = height
         this.xOffset = xOffset
@@ -79,7 +81,7 @@ class Screen():
         this.mostRecentlyIntroduced = timestamp = int(time.time())
     
     def __repr__(self):
-        return self.screenID
+        return self.deviceID
     
     def getState(this):
-        return {'screenID':this.screenID, 'mostRecentlyIntroduced':this.mostRecentlyIntroduced}
+        return {'deviceID':this.deviceID, 'mostRecentlyIntroduced':this.mostRecentlyIntroduced}

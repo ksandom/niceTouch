@@ -18,16 +18,17 @@
 
 import subprocess
 import time
+from . import devices
 
-class TouchPanels():
+class TouchPanels(devices.Devices):
     def __init__(this):
-        this.touchPanels = {}
+        this.devices = {}
 
     def scan(this):
         for device in this.getDevices():
             if (this.isDeviceATouchPannel(device)):
                 # TODO Handle identifying of the device more intellegently. The same ID isn't necessarily assigned to the same device each time.
-                this.touchPanels[device.deviceID] = device
+                this.devices[device.deviceID] = device
 
     def getDevices(this):
         output = []
@@ -54,7 +55,7 @@ class TouchPanels():
         for line in rawData.splitlines():
             lineParts = line.split(",")
             
-            output.append(Device(lineParts[1], lineParts[0]))
+            output.append(devices.Device(lineParts[1], lineParts[0]))
         
         return output
 
@@ -78,29 +79,4 @@ class TouchPanels():
         # If not 0, return true.
         return (rawData.splitlines()[0].decode() != '0')
     
-    def getPersistentState(this):
-        output = {}
-        
-        for deviceID in this.touchPanels:
-            output[deviceID] = this.touchPanels[deviceID].getState()        
-        return output
 
-    def setPersistentState(this, state):
-        for deviceID in state:
-            # TODO This should be done in a more object-oriented way.
-            this.touchPanels[deviceID ].mostRecentlyIntroduced = state[deviceID ]['mostRecentlyIntroduced']
-
-class Device():
-    def __init__(this, deviceID, name):
-        this.deviceID = deviceID
-        this.name = name
-        this.mostRecentlyIntroduced = timestamp = int(time.time())
-
-    def __repr__(self):
-        return self.deviceID
-    
-    def __str__(self):
-        return self.deviceID + " " + self.name
-    
-    def getState(this):
-        return {'deviceID':this.deviceID, 'name':this.name, 'mostRecentlyIntroduced':this.mostRecentlyIntroduced}

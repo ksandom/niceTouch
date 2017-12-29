@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from . import screens,touchPanels,state
+from . import devices,screens,touchPanels,state
 
 class NiceTouch():
     def __init__(this):
@@ -43,10 +43,8 @@ class NiceTouch():
     
     def showState(this):
         print (this.screens.screens)
-        print (this.touchPanels.touchPanels)
+        print (this.touchPanels.devices)
     
-    # TODO Add Save state
-    # TODO Add Load state
     # TODO Compare to current state to figure out what's new.
     # TODO Associate what's new if possible. And save knowledge.
     # TODO Calibrate everything we know.
