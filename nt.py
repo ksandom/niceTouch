@@ -24,4 +24,5 @@ nt = niceTouch.NiceTouch()
 
 nt.scan()
 nt.associateNewDevices()
+nt.calibrateDevices()
 nt.save()

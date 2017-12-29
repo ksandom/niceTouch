@@ -56,7 +56,7 @@ class TouchPanels(devices.Devices):
         for line in rawData.splitlines():
             lineParts = line.split(",")
             
-            output.append(devices.Device(lineParts[1], lineParts[0]))
+            output.append(TouchPanel(lineParts[1], lineParts[0]))
         
         return output
 
@@ -81,3 +81,11 @@ class TouchPanels(devices.Devices):
         return (rawData.splitlines()[0].decode() != '0')
     
 
+class TouchPanel(devices.Device):
+    def __init__(this, deviceID, name):
+        devices.Device.__init__(this, deviceID, name)
+    
+    def calibrate(this, screen):
+        print ("Calibrate: touchPanel " + this.deviceID + " to screen " + screen.deviceID)
+        
+        rawData = subprocess.check_output(['bash', '-c', "xinput --map-to-output " + this.deviceID + " " + screen.deviceID])

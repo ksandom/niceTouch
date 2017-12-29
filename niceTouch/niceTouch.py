@@ -49,6 +49,14 @@ class NiceTouch():
         this.touchPanels.devices[touchPanelID].associateWith(screenID)
         this.screens.devices[screenID].associateWith(touchPanelID)
     
+    def calibrateDevices(this):
+        for deviceID in this.touchPanels.devices:
+            # TODO reaching into other classes is not ideal. This should be abstracted away.
+            try:
+                screenID = this.touchPanels.devices[deviceID].associatedWith
+                this.touchPanels.devices[deviceID].calibrate(this.screens.devices[screenID])
+            except AttributeError:
+                print ("Touch screen \"" + this.touchPanels.devices[deviceID].name + "\" does not appear to be plugged in. Won't calibrate.")
     
     
     def load(this):
