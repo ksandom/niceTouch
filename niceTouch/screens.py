@@ -21,9 +21,9 @@ import time
 from . import devices
 
 
-class Screens():
+class Screens(devices.Devices):
     def __init__(this):
-        this.screens = {}
+        this.devices = {}
     
     def scan(this):
         output = {}
@@ -55,21 +55,21 @@ class Screens():
             output[lineParts[0]] = Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3])
         
         # Return the output.
-        this.screens=output
+        this.devices=output
         return output
     
     def getPersistentState(this):
         output = {}
         
-        for deviceID in this.screens:
-            output[deviceID] = this.screens[deviceID].getState()
+        for deviceID in this.devices:
+            output[deviceID] = this.devices[deviceID].getState()
         
         return output
     
     def setPersistentState(this, state):
         for deviceID in state:
             # TODO This should be done in a more object-oriented way.
-            this.screens[deviceID].mostRecentlyIntroduced = state[deviceID]['mostRecentlyIntroduced']
+            this.devices[deviceID].mostRecentlyIntroduced = state[deviceID]['mostRecentlyIntroduced']
 
 class Screen(devices.Device):
     def __init__(this, deviceID, width, height, xOffset, yOffset):

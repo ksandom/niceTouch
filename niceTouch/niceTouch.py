@@ -42,7 +42,7 @@ class NiceTouch():
         this.state.save()
     
     def showState(this):
-        print (this.screens.screens)
+        print (this.screens.devices)
         print (this.touchPanels.devices)
     
     # TODO Compare to current state to figure out what's new.
