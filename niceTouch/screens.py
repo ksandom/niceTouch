@@ -53,7 +53,10 @@ class Screens(devices.Devices):
         rawDataLines=rawData.splitlines()
         for line in rawDataLines:
             lineParts = line.decode().split(',')
-            output[lineParts[0]] = Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3])
+            try:
+                output[lineParts[0]] = Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3])
+            except:
+                print ("The screen data was not as expected. This is known to happen when the layout is being updated, but here is the line just in case\n" + line.decode())
         
         # Return the output.
         this.devices=output
