@@ -32,8 +32,13 @@ At the moment I'm running this from within the cloned repo. One of my next [TODO
 * Python 3
 * xrandr
 
-## Contributions
+## Contributions/Progress
 
-See [TODOs](docs/todos.md) for stuff that needs doing.
+See [TODOs](docs/todos.md) for stuff that needs doing and what I'm focussing on.
 
-TODO Contributions
+Feel free to
+
+* Create [issues](https://github.com/ksandom/niceTouch/issues) to report bugs or suggestions.
+* [Pull requests](https://github.com/ksandom/niceTouch/pulls)
+  * Fix bugs
+  * Add features
