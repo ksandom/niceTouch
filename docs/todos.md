@@ -12,10 +12,10 @@ Here is a list of stuff that needs to be done to improve this.
  * Automatically associate new touch device with recent unassociated screen. - DONE
 * Calibrate each touch device with its associated screen. - DONE
 * Remove hard-coded path to persistent state. - DONE
-* Documentation
- * How to use it.
- * Normal flow.
- * Basic debugging.
+* Documentation - DONE
+ * How to use it. - [DONE](docs/howToUseIt.md)
+ * Normal flow. - [DONE](docs/howToUseIt.md)
+ * Basic debugging. - [DONE](docs/debugging.md)
 
 ## For the second release
 
@@ -30,8 +30,9 @@ I've ordered them roughly in my order of preference, but feel free to take what 
 * Add more/better exception handeling.
  * Better handle state when a screen has been connected, but not configured yet. Eg `HDMI-1 connected`. For clues, start [here](https://github.com/ksandom/niceTouch/blob/master/niceTouch/screens.py#L56).
 * Graceful failure.
+* Better identification of the touch panel. At the moment the whole thing will break if it gets a different ID in the future, which is a very real possibility, especially if devices are plugged in in a different order. Name by itself isn't a viable solution, because it won't tolerate duplicates.
 * Abstract functionality functionality better.
-* Improve the code that harvests data about the screens and touch panels.
+* Improve the code that harvests data about the screens and touch panels. See TODOs inline in the code.
 * Better commandline interaction.
 * Make able to run as a service.
  * DBUS integration.

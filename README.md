@@ -3,8 +3,17 @@ Easily configure multiple touch and non touch screens on a single linux system.
 
 ## Use
 
+For best results, read [how to use it](docs/howToUseIt.md).
+
+* First run it with the least number of sccreen/touchpanels connected. - Preferably, one connected pair.
+* Now connect your next screen/touchpannel pair and run it again.
+ * Repeat until all your displays are connected.
+
+Every time you connect a screen that doesn't have a corresponding touchpanel, you will need to wait at least 10 seconds before proceeding to the next step.
+
+Eg
+
     $ ./nt.py 
-    Touch screen "BYZHYYZHY By ZH851" does not appear to be plugged in. Won't calibrate.
     Calibrate: touchPanel 9 to screen eDP-1
 
 Then I plug in an HDMI/USB touch screen, and run it again.
