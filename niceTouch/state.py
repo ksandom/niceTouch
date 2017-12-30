@@ -17,11 +17,12 @@
 """
 
 import yaml
+import os
 
 class State():
     def __init__(this):
         # Figure out where we will store state information.
-        this.stateDir="/home/ksandom/.config"
+        this.stateDir=os.environ['HOME'] + "/.config"
         this.stateFile="niceTouch.yaml"
         this.statePath=this.stateDir+"/"+this.stateFile
         

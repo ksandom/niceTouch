@@ -11,19 +11,23 @@ Here is a list of stuff that needs to be done to improve this.
 * Notice new touch device. - DONE
  * Automatically associate new touch device with recent unassociated screen. - DONE
 * Calibrate each touch device with its associated screen. - DONE
-* Remove hard-coded path to persistent state.
+* Remove hard-coded path to persistent state. - DONE
 * Documentation
  * How to use it.
  * Normal flow.
  * Basic debugging.
 
+## For the second release
+
+* Unit tests.
+* Make installation easy. `pip install`?
+* Any bug fixes.
+
 ## Stuff I invite other peoplee do contribute.
 
 I've ordered them roughly in my order of preference, but feel free to take what ever interests you. If you see anything nissing, you're welcomme to add it.
 
-* Unit tests.
-* Make installation easy. `pip install`?
-* Add exception handeling.
+* Add more/better exception handeling.
 * Graceful failure.
 * Abstract functionality functionality better.
 * Improve the code that harvests data about the screens and touch panels.
