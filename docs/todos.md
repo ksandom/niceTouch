@@ -28,6 +28,7 @@ Here is a list of stuff that needs to be done to improve this.
 I've ordered them roughly in my order of preference, but feel free to take what ever interests you. If you see anything nissing, you're welcomme to add it.
 
 * Add more/better exception handeling.
+ * Better handle state when a screen has been connected, but not configured yet. Eg `HDMI-1 connected`. For clues, start [here](https://github.com/ksandom/niceTouch/blob/master/niceTouch/screens.py#L56).
 * Graceful failure.
 * Abstract functionality functionality better.
 * Improve the code that harvests data about the screens and touch panels.
