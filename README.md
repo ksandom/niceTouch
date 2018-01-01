@@ -1,5 +1,5 @@
 # niceTouch
-Easily configure multiple touch and non touch screens on a single linux system.
+Easily calibrate multiple touch and non touch screens on a single linux system.
 
 ## Use
 
