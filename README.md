@@ -13,12 +13,12 @@ Every time you connect a screen that doesn't have a corresponding touchpanel, yo
 
 Eg
 
-    $ ./nt.py 
+    $ ./nt 
     Calibrate: touchPanel 9 to screen eDP-1
 
 Then I plug in an HDMI/USB touch screen, and run it again.
 
-    $ ./nt.py 
+    $ ./nt 
     Calibrate: touchPanel 14 to screen HDMI-1
     Calibrate: touchPanel 9 to screen eDP-1
 
