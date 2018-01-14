@@ -26,11 +26,11 @@ Soon, I want to have this running as a service listening to DBUS so that it will
 
 ## Install
 
-Most people
+### Most people
 
     sudo pip install niceTouch
 
-Developers
+### Developers
 
     sudo python ./setup install
 
