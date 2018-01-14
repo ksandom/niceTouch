@@ -32,12 +32,13 @@ Most people
 
 Developers
 
-    sudo python ./setup installl
+    sudo python ./setup install
 
 
 ### Pre-requisites
 * Python 3
 * xrandr
+* PyYAML - Will be pulled in during a pip install.
 
 ## Contributions/Progress
 
