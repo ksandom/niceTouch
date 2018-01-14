@@ -17,6 +17,6 @@ Possible causes
 
 ## Touch screen interacts with the entire desktop area
 
-Sounds like calibration hasn't happened. Have you run `./nt.py` after the device was plugged in? See [hoToUseIt.md](hoToUseIt.md) to make sure you're doing it right.
+Sounds like calibration hasn't happened. Have you run `nt` after the device was plugged in? See [hoToUseIt.md](hoToUseIt.md) to make sure you're doing it right.
 
 Failing that, Have a look at the output when running the command. Pull requests are welcome.

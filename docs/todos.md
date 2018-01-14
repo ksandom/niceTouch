@@ -20,7 +20,7 @@ Here is a list of stuff that needs to be done to improve this.
 ## For the second release
 
 * Unit tests.
-* Make installation easy. `pip install`?
+* Make installation easy. `pip install`? - DONE
 * Any bug fixes.
 
 ## Stuff I invite other peoplee do contribute.

@@ -13,12 +13,12 @@ Every time you connect a screen that doesn't have a corresponding touchpanel, yo
 
 Eg
 
-    $ ./nt 
+    $ nt
     Calibrate: touchPanel 9 to screen eDP-1
 
 Then I plug in an HDMI/USB touch screen, and run it again.
 
-    $ ./nt 
+    $ nt
     Calibrate: touchPanel 14 to screen HDMI-1
     Calibrate: touchPanel 9 to screen eDP-1
 
@@ -26,7 +26,14 @@ Soon, I want to have this running as a service listening to DBUS so that it will
 
 ## Install
 
-At the moment I'm running this from within the cloned repo. One of my next [TODOs](docs/todos.md) is to make it really easy.
+Most people
+
+    sudo pip install niceTouch
+
+Developers
+
+    sudo python ./setup installl
+
 
 ### Pre-requisites
 * Python 3
