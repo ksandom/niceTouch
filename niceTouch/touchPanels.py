@@ -1,19 +1,20 @@
+# -*- coding: utf-8 -*-
 """
-    Easily configure multiple touch and non touch screens on a single linux system.
-    Copyright (C) 2017  Kevin Sandom
+Easily configure multiple touch and non touch screens on a single linux system.
+Copyright (C) 2017  Kevin Sandom
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import subprocess
@@ -35,7 +36,7 @@ class TouchPanels(devices.Devices):
         output = []
         
         # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
-        rawData = subprocess.check_output(['bash', '-c', "xinput list | grep -v Virtual | sed 's/\(↳\|⎜\|id=\)//g;s/\(	\|   *\)/,/g' | cut -d, -f 2,4"]).decode()
+        rawData = subprocess.check_output(['bash', '-c', u"xinput list | grep -v Virtual | sed 's/\(↳\|⎜\|id=\)//g;s/\(	\|   *\)/,/g' | cut -d, -f 2,4"]).decode()
         """
             What it's doing:
                 * bash -c - so I can simply paste in the command that I know works without messing around converting the input and creating bugs.
