@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from . import devices,screens,touchPanels,state
+from . import devices, screens, touchPanels, state
 
 
 class NiceTouch():
@@ -25,11 +25,10 @@ class NiceTouch():
         this.touchPanels = touchPanels.TouchPanels()
         this.state = state.State()
 
-
     def scan(this):
-        this.screens.scan();
-        this.touchPanels.scan();
-        this.load()  # Load existing saved state and bring it into the current state.
+        this.screens.scan()
+        this.touchPanels.scan()
+        this.load()
 
     def associateNewDevices(this):
         newestTouchPanelID = this.touchPanels.getNewestUnassociatedDeviceID()
@@ -41,7 +40,10 @@ class NiceTouch():
             if newestScreenID:
                 this.associateDevices(newestTouchPanelID, newestScreenID)
             else:
-                print ("Touch panel " + newestTouchPanelID + " found, but no matching screen was found. Be sure to plug in the screen first.")
+                print ("Touch panel " +
+                       newestTouchPanelID +
+                       " found, but no matching screen was found. Be sure" +
+                       " to plug in the screen first.")
 
             lastDeviceID = newestTouchPanelID
             newestTouchPanelID = this.touchPanels.getNewestUnassociatedDeviceID()
@@ -52,24 +54,26 @@ class NiceTouch():
 
     def calibrateDevices(this):
         for deviceID in this.touchPanels.devices:
-            # TODO reaching into other classes is not ideal. This should be abstracted away.
+            # TODO reaching into other classes is not ideal. This should be
+            # abstracted away.
             try:
                 screenID = this.touchPanels.devices[deviceID].associatedWith
                 this.touchPanels.devices[deviceID].calibrate(this.screens.devices[screenID])
             except AttributeError:
-                print ("Touch screen \"" + this.touchPanels.devices[deviceID].name + "\" does not appear to be plugged in. Won't calibrate.")
-
+                print ("Touch screen \"" +
+                       this.touchPanels.devices[deviceID].name +
+                       "\" does not appear to be plugged in. Won't calibrate.")
 
     def load(this):
+        # Load existing saved state and bring it into the current state.
         this.screens.setPersistentState(this.state.getState()['screens'])
         this.touchPanels.setPersistentState(this.state.getState()['touchPanels'])
 
     def save(this):
         this.state.setState({
-            'screens':this.screens.getPersistentState(),
-            'touchPanels':this.touchPanels.getPersistentState()})
+            'screens': this.screens.getPersistentState(),
+            'touchPanels': this.touchPanels.getPersistentState()})
         this.state.save()
-
 
     def showState(this):
         print (this.screens.devices)
@@ -78,4 +82,3 @@ class NiceTouch():
     # TODO Compare to current state to figure out what's new.
     # TODO Associate what's new if possible. And save knowledge.
     # TODO Calibrate everything we know.
-

@@ -23,7 +23,7 @@ class Devices():
     def __init__(this):
         this.devices = {}
 
-        # Maximum number of seconds old a device may be to be considered to 
+        # Maximum number of seconds old a device may be to be considered to
         # be associated with another device.
         this.ageThreshold = 10
 
@@ -42,19 +42,11 @@ class Devices():
                 this.devices[deviceID].associatedWith = state[deviceID]['associatedWith']
                 this.devices[deviceID].setAbsent(False)
             except:
-                # We don't currently have this device. Let's put in a dummy 
+                # We don't currently have this device. Let's put in a dummy
                 # device so we can track that we've had it before.
                 this.devices[deviceID] = Device(deviceID, 'dummy')
                 this.devices[deviceID].loadState(state[deviceID])
                 this.devices[deviceID].setAbsent(True)
-
-    # TODO On second thoughts, this might not be the best way to do this.
-    # Consider removing.
-    #def getRecentDevices(this):
-        #output = {}
-        #for device in this.devices:
-            #if this.devices[device].getAge() < this.ageThreshold:
-                #output[device] = this.devices[device]
 
     def getNewestUnassociatedDeviceID(this):
         newestDeviceAge = this.ageThreshold
@@ -65,7 +57,7 @@ class Devices():
                 if this.devices[device].getAge() < newestDeviceAge:
                     newestDeviceID = device
 
-        if newestDeviceID != False:
+        if newestDeviceID is not False:
             return newestDeviceID
         else:
             return False
@@ -85,19 +77,17 @@ class Device():
     def __str__(self):
         return self.deviceID + " " + self.name
 
-
     def getState(this):
         return {
-            'deviceID':this.deviceID, 
-            'name':this.name, 
-            'associatedWith':this.associatedWith, 
-            'mostRecentlyIntroduced':this.mostRecentlyIntroduced}
+            'deviceID': this.deviceID,
+            'name': this.name,
+            'associatedWith': this.associatedWith,
+            'mostRecentlyIntroduced': this.mostRecentlyIntroduced}
 
     def loadState(this, state):
         this.name = state['name']
         this.mostRecentlyIntroduced = state['mostRecentlyIntroduced']
         this.associatedWith = state['associatedWith']
-
 
     def associateWith(this, deviceID):
         this.associatedWith = deviceID
@@ -107,7 +97,7 @@ class Device():
 
     def setAbsent(this, isAbsent):
         if (isAbsent):
-            this.mostRecentlyIntroduced = 0;
+            this.mostRecentlyIntroduced = 0
         else:
             if this.mostRecentlyIntroduced == 0:
                 this.mostRecentlyIntroduced = timestamp = this.getNow()
