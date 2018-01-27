@@ -30,14 +30,23 @@ class TouchPanels(devices.Devices):
     def scan(this):
         for device in this.getDevices():
             if (this.isDeviceATouchPannel(device)):
-                # TODO Handle identifying of the device more intellegently. The same ID isn't necessarily assigned to the same device each time.
+                # TODO Handle identifying of the device more intellegently.
+                # The same ID isn't necessarily assigned to the same device
+                # each time.
                 this.devices[device.deviceID] = device
 
     def getDevices(this):
         output = []
 
-        # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
-        rawData = subprocess.check_output(['bash', '-c', u"xinput list | grep -v Virtual | sed 's/\(↳\|⎜\|id=\)//g;s/\(	\|   *\)/,/g' | cut -d, -f 2,4"]).decode()
+        # TODO This line is horrific. Feel free to submit pull requests
+        # making it better, or doing it an entirely different way.
+        command = ['bash',
+                   '-c', 
+                   u"xinput list" +
+                   u" | grep -v Virtual" +
+                   u" | sed 's/\(↳\|⎜\|id=\)//g;s/\(	\|   *\)/,/g'" +
+                   u" | cut -d, -f 2,4"]
+        rawData = subprocess.check_output(command).decode()
         """
             What it's doing:
                 * bash -c - so I can simply paste in the command that I know works without messing around converting the input and creating bugs.
@@ -88,6 +97,12 @@ class TouchPanel(devices.Device):
         devices.Device.__init__(this, deviceID, name)
 
     def calibrate(this, screen):
-        print ("Calibrate: touchPanel " + this.deviceID + " to screen " + screen.deviceID)
+        print ("Calibrate: touchPanel " +
+               this.deviceID +
+               " to screen " +
+               screen.deviceID)
 
-        rawData = subprocess.check_output(['bash', '-c', "xinput --map-to-output " + this.deviceID + " " + screen.deviceID])
+        command = ['bash',
+                   '-c',
+                   "xinput --map-to-output " + this.deviceID + " " + screen.deviceID]
+        rawData = subprocess.check_output(command)

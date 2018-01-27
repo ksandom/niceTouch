@@ -29,8 +29,16 @@ class Screens(devices.Devices):
     def scan(this):
         output = {}
 
-        # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
-        rawData = subprocess.check_output(['bash', '-c', "xrandr | grep ' connected ' | sed 's/ (.*//g;s/ .* /,/g;s/x/,/g;s/+/,/g'"])
+        # TODO This command is horrific. Feel free to submit pull requests
+        # making it better, or doing it an entirely different way.
+        # I've started by at least getting it pep8 compliant.
+        command = [
+            'bash',
+            '-c',
+            "xrandr" +
+            " | grep ' connected '" +
+            " | sed 's/ (.*//g;s/ .* /,/g;s/x/,/g;s/+/,/g'"]
+        rawData = subprocess.check_output(command)
         """
             What it's doing:
                 * bash -c - so I can simply paste in the command that I know works without messing around converting the input and creating bugs.
@@ -50,7 +58,7 @@ class Screens(devices.Devices):
         """
 
         # Process the rawData.
-        rawDataLines=rawData.splitlines()
+        rawDataLines = rawData.splitlines()
         for line in rawDataLines:
             lineParts = line.decode().split(',')
             try:
@@ -59,8 +67,9 @@ class Screens(devices.Devices):
                 print ("The screen data was not as expected. This is known to happen when the layout is being updated, but here is the line just in case\n" + line.decode())
 
         # Return the output.
-        this.devices=output
+        this.devices = output
         return output
+
 
 class Screen(devices.Device):
     def __init__(this, deviceID, width, height, xOffset, yOffset):

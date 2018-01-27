@@ -23,9 +23,9 @@ import os
 class State():
     def __init__(this):
         # Figure out where we will store state information.
-        this.stateDir=os.environ['HOME'] + "/.config"
-        this.stateFile="niceTouch.yaml"
-        this.statePath=this.stateDir+"/"+this.stateFile
+        this.stateDir = os.environ['HOME'] + "/.config"
+        this.stateFile = "niceTouch.yaml"
+        this.statePath = this.stateDir + "/" + this.stateFile
 
         this.load()
 
@@ -38,17 +38,21 @@ class State():
                 try:
                     this.state = yaml.load(stream)
                 except yaml.YAMLError as error:
-                    print ("Could not parse the YAML in "+this.statePath+". Human edited? Try a YAML lint. The error was")
+                    print ("Could not parse the YAML in " +
+                           this.statePath +
+                           ". Human edited? Try a YAML lint. The error was")
                     print (error)
                     this.state = this.getEmptyState()
         except FileNotFoundError as error:
-            print ("Could not find the file " + this.statePath + ". If this is the first run, you can safely ignore this error.")
+            print ("Could not find the file " +
+                   this.statePath +
+                   ". If this is the first run, you can safely ignore this error.")
             this.state = this.getEmptyState()
 
     def getEmptyState(this):
         return {
-            'touchPanels':{},
-            'screens':{}}
+            'touchPanels': {},
+            'screens': {}}
 
     def setState(this, state):
         this.state = state
