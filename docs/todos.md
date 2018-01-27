@@ -17,10 +17,28 @@ Here is a list of stuff that needs to be done to improve this.
   * Normal flow. - [DONE](docs/howToUseIt.md)
   * Basic debugging. - [DONE](docs/debugging.md)
 
-## For the second release
+## Soon
 
+* # -*- coding: utf-8 -*-
+* Fix formatting
+  * pep8
+  * pyflakes
+  * yapf
 * Unit tests.
+  * env python3 -m unittest discover -v
+  * pytest
+  * coverage
+    * pytest-cov
+    * colorama
 * Make installation easy. `pip install`? - DONE
+  * Version
+  * Classifiers
+  * README.rst
+  * https://readthedocs.org/ 
+    * sphinx
+    * find sphinx tutorial
+    * eg https://github.com/palankai/quepy/blob/develop/docs/conf.py
+  * travis
 * Any bug fixes.
 
 ## Stuff I invite other peoplee do contribute.
