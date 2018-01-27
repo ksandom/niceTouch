@@ -22,13 +22,13 @@ from setuptools import setup
 
 
 setup(
-        name = 'niceTouch',
-        version = '2018.1.14.1',
-        scripts = ['nt'],
-        packages = ['niceTouch'],
-        install_requires = ['PyYAML'],
-        license = 'GPL-3.0',
-        url = 'https://github.com/ksandom/niceTouch',
-        author = 'Kevin Sandom',
-        author_email = 'kjsandom@gmail.com'
+    name='niceTouch',
+    version='2018.1.14.1',
+    scripts=['nt'],
+    packages=['niceTouch'],
+    install_requires=['PyYAML'],
+    license='GPL-3.0',
+    url='https://github.com/ksandom/niceTouch',
+    author='Kevin Sandom',
+    author_email='kjsandom@gmail.com'
     )
