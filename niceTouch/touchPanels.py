@@ -35,7 +35,7 @@ class TouchPanels(devices.Devices):
 
     def getDevices(this):
         output = []
-        
+
         # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
         rawData = subprocess.check_output(['bash', '-c', u"xinput list | grep -v Virtual | sed 's/\(↳\|⎜\|id=\)//g;s/\(	\|   *\)/,/g' | cut -d, -f 2,4"]).decode()
         """
@@ -47,19 +47,19 @@ class TouchPanels(devices.Devices):
                     * s/\(↳\|⎜\|id=\)//g - Strips out characters that get in our way.
                     * s/\(	\|   *\)/,/g - Converts multiple spaces to a comma to denote a field.
                 * cut -d, -f 2,4 - Gives us field 2 and 4 using the comma as the delimeter.
-            
+
             Why it needs to be revisited:
                 * It is dependant on specific formatting of the data.
                     * Minor changes to the human readable format will destroy compatiblity.
                     * Different versions of xinput may output the data differently.
                 * There is almost certainly a way to get this information within python in a more elegant way.
         """
-        
+
         for line in rawData.splitlines():
             lineParts = line.split(",")
-            
+
             output.append(TouchPanel(lineParts[1], lineParts[0]))
-        
+
         return output
 
     def isDeviceATouchPannel(this, device):
@@ -71,23 +71,23 @@ class TouchPanels(devices.Devices):
                 * xinput list - Gives information about a specific device.
                 * grep 'Abs.*X\(X\|Y\)': Only find devices with absolute positioning. This may pick up things like drawing tablets. We can figure that out later.
                 * wc -l - Gives us a count of matching lines. 0 is not a touch panel. >0 is an absolute device, which is probably a touch panel.
-            
+
             Why it needs to be revisited:
                 * It is dependant on specific formatting of the data.
                     * Minor changes to the human readable format will destroy compatiblity.
                     * Different versions of xinput may output the data differently.
                 * There is almost certainly a way to get this information within python in a more elegant way.
         """
-        
+
         # If not 0, return true.
         return (rawData.splitlines()[0].decode() != '0')
-    
+
 
 class TouchPanel(devices.Device):
     def __init__(this, deviceID, name):
         devices.Device.__init__(this, deviceID, name)
-    
+
     def calibrate(this, screen):
         print ("Calibrate: touchPanel " + this.deviceID + " to screen " + screen.deviceID)
-        
+
         rawData = subprocess.check_output(['bash', '-c', "xinput --map-to-output " + this.deviceID + " " + screen.deviceID])

@@ -26,12 +26,12 @@ class State():
         this.stateDir=os.environ['HOME'] + "/.config"
         this.stateFile="niceTouch.yaml"
         this.statePath=this.stateDir+"/"+this.stateFile
-        
+
         this.load()
-    
+
     def __exit__(self):
         self.save()
-    
+
     def load(this):
         try:
             with open(this.statePath, 'r') as stream:
@@ -44,18 +44,18 @@ class State():
         except FileNotFoundError as error:
             print ("Could not find the file " + this.statePath + ". If this is the first run, you can safely ignore this error.")
             this.state = this.getEmptyState()
-    
+
     def getEmptyState(this):
         return {
             'touchPanels':{},
             'screens':{}}
-    
+
     def setState(this, state):
         this.state = state
-    
+
     def getState(this):
         return this.state
-    
+
     def save(this):
         # TODO Add try/excepts as conditions become apparrent.
         with open(this.statePath, 'w') as stream:

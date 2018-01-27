@@ -25,10 +25,10 @@ class Screens(devices.Devices):
     def __init__(this):
         devices.Devices.__init__(this)
         this.devices = {}
-    
+
     def scan(this):
         output = {}
-        
+
         # TODO This line is horrific. Feel free to submit pull requests making it better, or doing it an entirely different way.
         rawData = subprocess.check_output(['bash', '-c', "xrandr | grep ' connected ' | sed 's/ (.*//g;s/ .* /,/g;s/x/,/g;s/+/,/g'"])
         """
@@ -41,14 +41,14 @@ class Screens(devices.Devices):
                     * s/ .* /,/g - Remove everything except the ID and the dimention and position data.
                     * s/x/,/g - Change the x in the resolution to a ,. This plus the next step make the explode easy and one step.
                     * s/+/,/g - Change the + for the offsets to ,s to make the explode one step.
-            
+
             Why it needs to be revisited:
                 * It is dependant on specific formatting of the data.
                     * Minor changes to the human readable format will destroy compatiblity.
                     * Different versions of xinput may output the data differently.
                 * There is almost certainly a way to get this information within python in a more elegant way.
         """
-        
+
         # Process the rawData.
         rawDataLines=rawData.splitlines()
         for line in rawDataLines:
@@ -57,7 +57,7 @@ class Screens(devices.Devices):
                 output[lineParts[0]] = Screen(lineParts[0], lineParts[1], lineParts[2], lineParts[3], lineParts[3])
             except:
                 print ("The screen data was not as expected. This is known to happen when the layout is being updated, but here is the line just in case\n" + line.decode())
-        
+
         # Return the output.
         this.devices=output
         return output
@@ -71,6 +71,6 @@ class Screen(devices.Device):
         this.xOffset = xOffset
         this.yOffset = yOffset
         this.mostRecentlyIntroduced = timestamp = int(time.time())
-    
+
     def __repr__(self):
         return self.deviceID
