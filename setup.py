@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from setuptools import setup
 
+
 setup(
         name = 'niceTouch',
         version = '2018.1.14.1',

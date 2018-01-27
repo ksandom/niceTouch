@@ -21,6 +21,7 @@ import subprocess
 import time
 from . import devices
 
+
 class TouchPanels(devices.Devices):
     def __init__(this):
         devices.Devices.__init__(this)

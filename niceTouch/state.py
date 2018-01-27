@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import yaml
 import os
 
+
 class State():
     def __init__(this):
         # Figure out where we will store state information.

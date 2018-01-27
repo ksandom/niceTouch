@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from . import devices,screens,touchPanels,state
 
+
 class NiceTouch():
     def __init__(this):
         this.screens = screens.Screens()
