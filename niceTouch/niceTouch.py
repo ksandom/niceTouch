@@ -54,7 +54,11 @@ class NiceTouch():
             # TODO reaching into other classes is not ideal. This should be abstracted away.
             try:
                 screenID = this.touchPanels.devices[deviceID].associatedWith
-                this.touchPanels.devices[deviceID].calibrate(this.screens.devices[screenID])
+                if screenID is not '':
+                    screen = this.screens.devices[screenID]
+                    this.touchPanels.devices[deviceID].calibrate(screen)
+                else:
+                    print ("Screen \"" + this.touchPanels.devices[deviceID].name + "\" does not appear to have an associated touch panel. Won't calibrate.")
             except AttributeError:
                 print ("Touch screen \"" + this.touchPanels.devices[deviceID].name + "\" does not appear to be plugged in. Won't calibrate.")
     
