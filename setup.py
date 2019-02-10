@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 """
     Easily configure multiple touch and non touch screens on a single linux system.
@@ -22,7 +22,7 @@ from setuptools import setup
 
 setup(
         name = 'niceTouch',
-        version = '2018.1.14.1',
+        version = '2019.2.10.1',
         scripts = ['nt'],
         packages = ['niceTouch'],
         install_requires = ['PyYAML'],
